@@ -4,6 +4,7 @@ import HomeButton from '../reuse/Buttons';
 import { TextInput,Appbar } from 'react-native-paper';
 import { abs } from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/Ionicons'
+import GlobalHead from '../screens/Header';
 
 function Dashboard(props) {
 
@@ -18,10 +19,7 @@ function Dashboard(props) {
 
         <View style={styles.container}>
            
-            <ImageBackground style={{ width:"100%",height:100 }} source={require('../../images/header2.png')} >
-            <Icon name="chevron-back-outline" style={{color:'white',fontWeight:'bold',fontSize:30,position:"absolute",top:10,left:10}}/>
-                <Text style={styles.headerheading}>Blood Request</Text>
-            </ImageBackground>
+            <GlobalHead arrowstatus={true} headTitle={"Blood Request"} redirect={()=>props.navigation.goBack()}/>
             
 
             <View style={styles.mainViewRowDiv}>
@@ -129,9 +127,7 @@ const styles = StyleSheet.create({
 
         
     },
-    headerheading:{
-        textAlign:'center',color:"white",fontWeight:"bold",marginTop:20,fontSize:20
-    }
+    
 
 
 
