@@ -9,3 +9,8 @@ yarn add @react-navigation/stack
 
 library linking:
 react-native link libraryname
+
+
+for date of birth calender:
+yarn add @react-native-community/datetimepicker
+

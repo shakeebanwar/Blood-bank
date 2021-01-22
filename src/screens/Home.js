@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, View, StyleSheet, Image, Text,ScrollView } from 'react-native';
+import { Alert, View, StyleSheet, Image, Text, ScrollView } from 'react-native';
 import HomeButton from '../reuse/Buttons';
 import { TextInput } from 'react-native-paper';
 
@@ -18,76 +18,74 @@ function home(props) {
 
             <ScrollView>
 
-        <View style={styles.container}>
+                <View style={styles.container}>
 
-<View style={styles.logoDiv}>
-    <Image
-        style={{ width: 120, height: 120 }}
-        source={require('../../images/blood.png')} />
-
-
-
-</View>
+                    <View style={styles.logoDiv}>
+                        <Image
+                            style={{ width: 120, height: 120 }}
+                            source={require('../../images/blood.png')} />
 
 
 
-<View style={styles.buttonDiv}>
-    <TextInput underlineColor="red" selectionColor="red" style={{ backgroundColor: 'transparent' }}
-        label="Email"
-        value={text}
-        onChangeText={text => setText(text)}
-        theme={{
-            colors: {
-                primary: "red"
-            }
-        }}
-    />
-
-
-</View>
-
-
-<View style={styles.buttonDiv}>
-    <TextInput underlineColor="red" selectionColor="red" style={{ backgroundColor: 'transparent' }}
-        label="Password"
-        value={text}
-
-        onChangeText={text => setText(text)}
-        theme={{
-            colors: {
-                primary: "red"
-            }
-        }}
-    />
-
-</View>
-
-
-<View style={styles.ForgetView}>
-
-    <Text style={styles.bottomText}>Forget Password?</Text>
+                    </View>
 
 
 
-</View>
+                    <View style={styles.buttonDiv}>
+                        <TextInput underlineColor="red" selectionColor="red" style={{ backgroundColor: 'transparent' }}
+                            label="Email"
+                            value={text}
+                            onChangeText={text => setText(text)}
+                            theme={{
+                                colors: {
+                                    primary: "red"
+                                }
+                            }}
+                        />
 
 
-<View style={[styles.buttonDiv, {marginTop: 20}]}>
-
-    <HomeButton name={"Login"} />
-
-</View>
+                    </View>
 
 
-<View style={styles.bottomDiv}>
+                    <View style={styles.buttonDiv}>
+                        <TextInput underlineColor="red" selectionColor="red" style={{ backgroundColor: 'transparent' }}
+                            label="Password"
+                            value={text}
 
-    <Text style={styles.bottomText}>Do You have an Account?</Text>
-    <Text style={[styles.bottomText, { color: '#BF322D', opacity: 1, fontWeight: 'bold', marginStart: 5 }]} onPress={()=>props.navigation.navigate("Register")}>Register</Text>
+                            onChangeText={text => setText(text)}
+                            theme={{
+                                colors: {
+                                    primary: "red"
+                                }
+                            }}
+                        />
+
+                    </View>
 
 
-</View>
+                    <View style={styles.ForgetView}>
+
+                        <Text style={styles.bottomText}>Forget Password?</Text>
 
 
+
+                    </View>
+
+
+                    <View style={[styles.buttonDiv, { marginTop: 20 }]}>
+
+                        <HomeButton name={"Login"} />
+
+                    </View>
+
+
+                    <View style={styles.bottomDiv}>
+
+                        <Text style={styles.bottomText}>Do You have an Account?</Text>
+                        <Text style={[styles.bottomText, { color: '#BF322D', opacity: 1, fontWeight: 'bold', marginStart: 5 }]} onPress={() => props.navigation.navigate("Register")}>Register</Text>
+
+
+                    </View>
 
 
 
@@ -95,7 +93,9 @@ function home(props) {
 
 
 
-</View>
+
+
+                </View>
 
             </ScrollView>
         </View>
@@ -121,15 +121,15 @@ const styles = StyleSheet.create({
     },
     buttonDiv: {
 
-        margin:10, 
-        
+        margin: 10,
+
 
     },
     bottomText: {
 
         fontSize: 12,
         opacity: 0.5,
-        fontWeight:"bold"
+        fontWeight: "bold"
 
     },
     bottomDiv: {
@@ -138,12 +138,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         bottom: 10,
         width: "100%",
-        marginTop:15
+        marginTop: 15
 
 
     },
 
-    ForgetView:{
+    ForgetView: {
 
         flexDirection: 'row',
         justifyContent: 'center',
