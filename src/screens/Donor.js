@@ -45,7 +45,7 @@ function BloodRequest(props) {
 
 
 
-            <GlobalHead arrowstatus={true} headTitle={"Blood Request Form"} redirect={() => props.navigation.goBack()} />
+            <GlobalHead arrowstatus={true} headTitle={"Donor Form"} redirect={() => props.navigation.goBack()} />
             <ScrollView>
 
                 
@@ -114,19 +114,7 @@ function BloodRequest(props) {
                 </View>
 
 
-                <View style={styles.PickerGender}>
-
-
-
-                    <Picker style={{ color: 'grey' }} selectedValue={selectedValue} onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)} >
-                        <Picker.Item label="Blood For" value="" />
-                        <Picker.Item label="Self" value="Self" />
-                        <Picker.Item label="Other" value="Other" />
-                    </Picker>
-
-
-
-                </View>
+                
 
 
 
@@ -166,7 +154,7 @@ function BloodRequest(props) {
 
                 <View style={styles.buttonDiv}>
                     <TextInput underlineColor="red" selectionColor="red" style={{ backgroundColor: 'transparent' }}
-                        label="Message to Doctor"
+                        label="Place to Doctor"
                         value={text}
 
                         onChangeText={text => setText(text)}
@@ -181,7 +169,7 @@ function BloodRequest(props) {
 
                 <View style={[styles.buttonDiv, { marginTop: 20 }]}>
 
-                    <HomeButton name={"Submit Request"} redirect={() => props.navigation.navigate("BloodRequestDashboard")} />
+                    <HomeButton name={"Donate"} redirect={() => props.navigation.navigate("BloodRequestDashboard")} />
 
                 </View>
 
