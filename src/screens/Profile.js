@@ -30,7 +30,7 @@ function ChangePassword(props) {
                 </TouchableOpacity>
             </View>
             <View style={{ alignItems: "center", top: 5 }}>
-                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#636363', fontWeight: 'bold' }}>Shakeeb Anwar</Text>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#636363'}}>Shakeeb Anwar</Text>
                 <View style={{ flexDirection: 'row' }}>
                     <Icon name="location-outline" style={{ color: '#636363', fontWeight: 'bold', fontSize: 20 }} />
                     <Text style={{ fontSize: 15, color: '#636363' }}>Pakistan</Text>
@@ -39,14 +39,47 @@ function ChangePassword(props) {
 
             </View>
 
-            <View style={{margin:"4%",top:"4%"}}>
-            <View>
+            <View style={{ margin: "4%", top: "4%" ,flexDirection:'row',padding:10,backgroundColor:"white",borderRadius:10,borderWidth:1,borderColor:'#BF322D',width:"80%",alignSelf:'center'}}>
+                <View>
 
-            <Icon name="call-outline" style={{ color: '#636363', fontWeight: 'bold', fontSize: 20 }} />
+                    <Icon name="call-outline" style={{ color: '#636363', fontWeight: 'bold', fontSize: 20 }} />
+
+
+                </View>
+                <View style={{left:15}}>
+                    <Text style={{color:'#636363',fontSize: 15, fontWeight: 'bold'}}>03482102017</Text>
+                </View>
 
             </View>
 
+
+            <View style={{ margin: "2%", top: "4%" ,flexDirection:'row',padding:10,backgroundColor:"white",borderRadius:10,borderWidth:1,borderColor:'#BF322D',width:"80%",alignSelf:'center'}}>
+                <View>
+
+                    <Icon name="calendar-outline" style={{ color: '#636363', fontWeight: 'bold', fontSize: 20 }} />
+
+
+                </View>
+                <View style={{left:15}}>
+                    <Text style={{color:'#636363',fontSize: 15, fontWeight: 'bold'}}>12 Jan, 1998</Text>
+                </View>
+
             </View>
+
+
+            <View style={{ margin: "2%", top: "4%" ,flexDirection:'row',padding:10,backgroundColor:"white",borderRadius:10,borderWidth:1,borderColor:'#BF322D',width:"80%",alignSelf:'center'}}>
+                <View>
+
+                    <Icon name="transgender-outline" style={{ color: '#636363', fontWeight: 'bold', fontSize: 20 }} />
+
+
+                </View>
+                <View style={{left:15}}>
+                    <Text style={{color:'#636363',fontSize: 15, fontWeight: 'bold'}}>Male</Text>
+                </View>
+
+            </View>
+
 
 
 
