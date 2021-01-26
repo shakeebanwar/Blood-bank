@@ -74,7 +74,7 @@ function home(props) {
 
                     <View style={[styles.buttonDiv, { marginTop: 20 }]}>
 
-                        <HomeButton name={"Login"} />
+                        <HomeButton name={"Login"} redirect={()=>props.navigation.navigate("home")} />
 
                     </View>
 

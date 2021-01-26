@@ -145,7 +145,7 @@ function BloodRequest(props) {
 
                 <View style={[styles.buttonDiv, { marginTop: 20 }]}>
 
-                    <HomeButton name={"Create An Request"} redirect={() => props.navigation.navigate("Dashboard")} />
+                    <HomeButton name={"Create An Request"} redirect={() => props.navigation.navigate("BloodRequestDashboard")} />
 
                 </View>
 

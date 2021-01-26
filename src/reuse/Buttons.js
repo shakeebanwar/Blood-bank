@@ -4,10 +4,10 @@ import { Button } from 'react-native-paper';
 
 
 
-function buttons({name,redirect}) {
+function buttons({name,redirect,WIDTH,HEIGHT}) {
 
     return (
-        <Button  style={styles.buttonDiv}mode="contained" onPress={()=>redirect()}>
+        <Button  style={[styles.buttonDiv,{width:WIDTH,height:HEIGHT}]}mode="contained" onPress={()=>redirect()}>
         {name}
       </Button>
 
@@ -21,7 +21,9 @@ const styles = StyleSheet.create({
 
         justifyContent: 'center',
         backgroundColor:'#BF322D',
-        padding:"2%"
+        padding:"2%",
+      
+
       
     },
 });

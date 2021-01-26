@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, View, StyleSheet, Image, Text, ScrollView,ImageBackground } from 'react-native';
+import { Alert, View, StyleSheet, Image, Text, ScrollView,ImageBackground, TouchableOpacity } from 'react-native';
 import HomeButton from '../reuse/Buttons';
 import { TextInput,Appbar } from 'react-native-paper';
 import { abs } from 'react-native-reanimated';
@@ -25,12 +25,17 @@ function Dashboard(props) {
             <View style={styles.mainViewRowDiv}>
                 <View style={styles.mainViewRow}>
 
-                    <View style={styles.Request}>
-                        <Image style={{ width:100, height: 100 }} source={require('../../images/bloodrequest.png')} />
-                    </View>
-                    <View style={styles.Donor}>
-                    <Image style={{ width: 110, height: 100 }} source={require('../../images/donorblood.png')} />
 
+                    <View style={styles.Request}>
+                    <TouchableOpacity onPress={()=>props.navigation.navigate("BloodRequest")}>
+                        <Image  style={{ width:100, height: 100 }} source={require('../../images/bloodrequest.png')} />
+                    </TouchableOpacity>
+                    </View>
+                    
+                    <View style={styles.Donor}>
+                    <TouchableOpacity onPress={()=>props.navigation.navigate("BloodRequest")}>
+                    <Image style={{ width: 110, height: 100 }} source={require('../../images/donorblood.png')} />
+                    </TouchableOpacity>
                     </View>
 
 

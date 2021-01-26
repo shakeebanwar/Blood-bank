@@ -146,7 +146,7 @@ function home(props) {
 
                     <View style={[styles.buttonDiv, { marginTop: 20 }]}>
 
-                        <HomeButton name={"Create An Account"} redirect={()=>props.navigation.navigate("Dashboard")}/>
+                        <HomeButton name={"Create An Account"} redirect={()=>props.navigation.navigate("home")}/>
 
                     </View>
 
