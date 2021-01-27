@@ -19,7 +19,7 @@ function Dashboard(props) {
 
         <View style={styles.container}>
            
-            <GlobalHead arrowstatus={true} headTitle={"Blood Request"} redirect={()=>props.navigation.goBack()}/>
+            <GlobalHead arrowstatus={false} headTitle={"Blood Request"} redirect={()=>props.navigation.goBack()}/>
             
 
             <View style={styles.mainViewRowDiv}>

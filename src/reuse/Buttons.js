@@ -4,10 +4,10 @@ import { Button } from 'react-native-paper';
 
 
 
-function buttons({name,redirect,WIDTH,HEIGHT}) {
+function buttons({name,redirect,WIDTH,HEIGHT,buttonActiveStatus}) {
 
     return (
-        <Button  style={[styles.buttonDiv,{width:WIDTH,height:HEIGHT}]}mode="contained" onPress={()=>redirect()}>
+        <Button  style={[styles.buttonDiv,{width:WIDTH,height:HEIGHT}]}mode="contained" onPress={()=>redirect()} disabled={buttonActiveStatus}>
         {name}
       </Button>
 
