@@ -21,6 +21,8 @@ import {
 
 import AppNavigation from './src/config/navigation';
 import Splash from './src/screens/Splash';
+import { Provider } from 'react-redux'
+import store from './src/store'
 
 // const App= () => {
 
@@ -50,7 +52,12 @@ const App= () => {
   
   return (
 
-   <AppNavigation />
+    <Provider store={store}>
+          <AppNavigation />
+
+    </Provider>
+
+ 
    
       
    

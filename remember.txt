@@ -14,3 +14,30 @@ react-native link libraryname
 for date of birth calender:
 yarn add @react-native-community/datetimepicker
 
+
+
+Redux:
+https://www.youtube.com/watch?v=wQ4xs6em_nM&list=PLWX9NnKvk9DHgSU7Q8vSyDWSvUwrOPpdN&index=35
+
+yarn add react-redux redux redux-logger redux-promise-middleware redux-thunk
+
+store ka andar reducer.js hi hamara store ha aur index.js ma apni store ko initialize karonga
+store ma huma hamari global state mila gi aur action ka folder ma functions
+
+
+use of redux:
+jb mujhe apni global state ko excess karna honga tu ma sb phala  'import { connect } from 'react-redux';' karna honga
+
+
+connnect jb import karaga tu connect 2 parameter laaga ak mapstatetoprop , mapdispatchtoprop
+
+
+const mapStateToProps=(state)=> ({
+
+    name:state.name //yaha jo bi property ha wo mujhe is component ka prop ma mil jaye gi
+    
+  })
+
+
+
+hum ak sa zada bi reducer bana sakta ha 

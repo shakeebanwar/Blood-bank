@@ -4,7 +4,7 @@ import HomeButton from '../reuse/Buttons';
 import { TextInput } from 'react-native-paper';
 import axios from 'axios';
 import Loader from '../screens/loader';
-
+import { connect } from 'react-redux';
 
 function home(props) {
 
@@ -15,6 +15,7 @@ function home(props) {
     const [loader, setLoader] = useState(false);
 
     console.log("my state is ",username,password)
+    console.log("redux===> ",props.name,props.appname)
 
     const Login=()=>{
 
@@ -195,5 +196,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     }
 });
-// BF322D
-export default home
+
+
+
+
+const mapStateToProps=(state)=> ({
+
+    name:state.auth.username,
+    appname:state.app.name
+    
+  })
+  
+export default connect(mapStateToProps,null) (home)
