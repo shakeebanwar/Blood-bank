@@ -5,6 +5,7 @@ import { TextInput } from 'react-native-paper';
 import axios from 'axios';
 import Loader from '../screens/loader';
 import { connect } from 'react-redux';
+import {set_data} from '../store/action'
 
 function home(props) {
 
@@ -15,39 +16,42 @@ function home(props) {
     const [loader, setLoader] = useState(false);
 
     console.log("my state is ",username,password)
-    console.log("redux===> ",props.name,props.appname)
+    console.log("redux===> ",props.name,props.appname,props)
 
     const Login=()=>{
 
+
+        props.setdata(username)
+
         
-        setLoader(true)
-        var formdata = new FormData();
-        formdata.append("Username", username);
-        formdata.append("Password", password);
-        formdata.append("Sender_ID", "dCCqEA1dRbyN_9YmWCRDDD:APA91bGpyATcY7d-IH2ksllRzmWuOWk7fn1HsHD71kQWdaPiYxqHYCsbbqKdVL1pjoSf4wRtzzgoctlf0d6LXwNbC03b3f7g__tW2GSKaBIzdAvYpbXf-07bMYzCq5XWVfCxqppacAGL");
-        formdata.append("Device_type", "android");
-        formdata.append("latitude", "24.721");
-        formdata.append("longitude", "24.721");
+        // setLoader(true)
+        // var formdata = new FormData();
+        // formdata.append("Username", username);
+        // formdata.append("Password", password);
+        // formdata.append("Sender_ID", "dCCqEA1dRbyN_9YmWCRDDD:APA91bGpyATcY7d-IH2ksllRzmWuOWk7fn1HsHD71kQWdaPiYxqHYCsbbqKdVL1pjoSf4wRtzzgoctlf0d6LXwNbC03b3f7g__tW2GSKaBIzdAvYpbXf-07bMYzCq5XWVfCxqppacAGL");
+        // formdata.append("Device_type", "android");
+        // formdata.append("latitude", "24.721");
+        // formdata.append("longitude", "24.721");
 
       
 
-        axios.post("http://bloodbankapp.pythonanywhere.com/Login",formdata)
-        .then(response=>{
+        // axios.post("http://bloodbankapp.pythonanywhere.com/Login",formdata)
+        // .then(response=>{
 
-            console.log("data ",response.data)
+        //     console.log("data ",response.data)
             
-            if(response.data.status){
-                setLoader(false)
-                alert(response.data.message)
-                props.navigation.navigate("Dashboard")
-            }
-            else{
-                setLoader(false)
-                alert(response.data.message)
+        //     if(response.data.status){
+        //         setLoader(false)
+        //         alert(response.data.message)
+        //         props.navigation.navigate("Dashboard")
+        //     }
+        //     else{
+        //         setLoader(false)
+        //         alert(response.data.message)
 
-            }
-        })
-        .catch(error => console.log('error', error));
+        //     }
+        // })
+        // .catch(error => console.log('error', error));
 
     }
 
@@ -207,4 +211,10 @@ const mapStateToProps=(state)=> ({
     
   })
   
-export default connect(mapStateToProps,null) (home)
+
+const mapDispatchToProps = (dispatch)=> ({
+
+        setdata : (data)=> dispatch(set_data(data))
+    
+  })
+export default connect(mapStateToProps,mapDispatchToProps) (home)

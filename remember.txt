@@ -41,3 +41,43 @@ const mapStateToProps=(state)=> ({
 
 
 hum ak sa zada bi reducer bana sakta ha 
+
+
+const mapDispatchToProps = (dispatch)=> ({ //parameter ma dispatch ka kam ha state wagera ko update karna 
+
+        setdata : ()=>console.log("shoaib")
+    
+  })
+
+
+
+  const mapDispatchToProps = (dispatch)=> ({
+
+        setdata : ()=> dispatch(set_data()) //yaha dispatch ka andar isliya rakh ka call kiya taka hum isko redux ka sath connnect kara
+    
+  })
+
+
+
+  import { createStore,applyMiddleware} from 'redux' // jb hum redux sa koi functional kam karwata ha tu huma applyMiddleware aur thunk dono ko use karna hota ha 
+
+  UPDATE REDUX STATE:
+  //YAHA MANA YA FUNCTION REDUCER KA ANDAR INDEX.JS MA BANAYA HA
+  const set_data=()=>{
+
+    return (dispatch)=>{
+        dispatch({type:"SETDATA"}) //JB BI YA DISPATCH CALL HOGA TU REDUCER KA PASS REQUEST JAEGI
+
+    }
+    
+}
+
+
+
+//DISPATCH CALL KA BAAD MUJHE ACTION KA ANDAR MERI REQUEST ACCEPT HOGI
+export default (state = INITIAL_STATE,action)=>{
+
+    return state;
+
+}
+*jb bi koi function dispatch ma call hoga tu sb dispatch chalaga

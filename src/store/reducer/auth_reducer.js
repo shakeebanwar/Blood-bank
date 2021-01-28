@@ -4,8 +4,8 @@ const INITIAL_STATE = {
    
 }
 
-export default (state = INITIAL_STATE)=>{
-
+export default (state = INITIAL_STATE,action)=>{
+    console.log("my auth request======> ",action)
     return state;
 
 }
