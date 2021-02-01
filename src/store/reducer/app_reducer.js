@@ -1,17 +1,17 @@
 const INITIAL_STATE = {
-    name : "Facebook"
+    userlogin : {}
    
 }
 
 export default (state = INITIAL_STATE,action)=>{
-    console.log("my app request======> ",action)
+    //console.log("my app request======> ",action)
     switch (action.type){
 
-        case "SETDATA":
+        case "SETAUTHDATA":
             return({
 
                 ...state,
-                name : action.data
+                userlogin : action.data
             })
     }
     return state;
