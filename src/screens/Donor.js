@@ -6,16 +6,26 @@ import { abs } from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/Ionicons'
 import GlobalHead from '../screens/Header';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Loader from '../screens/loader';
+import axios from 'axios';
+
 
 function BloodRequest(props) {
 
 
-    const [text, setText] = React.useState('');
-    const [selectedValue, setSelectedValue] = useState("male");
-    const [bloodselectedValue, bloodsetSelectedValue] = useState("O+");
-    const [date, setDate] = useState(new Date(1598051730000));
+
+    const [blood, setblood] = useState("O+");
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
+    const [date, setDate] = useState(false);
+    const [firstname, setfirstname] = useState('');
+    const [lastname, setlastname] = useState('');
+    const [gender, setgender] = useState('');
+    const [address, setaddress] = useState('');
+    const [donateplace, setdonateplace] = useState('');
+    const [loader, setLoader] = useState(false);
+
 
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
@@ -34,6 +44,48 @@ function BloodRequest(props) {
     };
 
 
+    const donateBlood = async () => {
+
+        setLoader(true)
+        let pickerdate = date.getDate()
+        let pickermonth = date.getMonth() + 1
+        let pickerYear = date.getFullYear()
+        let fulldate = `${pickerdate}/` + `${pickermonth}/` + `${pickerYear}`
+        let jsonValue = await AsyncStorage.getItem('userauth')
+        jsonValue = JSON.parse(jsonValue)
+
+        var formdata = new FormData();
+        formdata.append("id", jsonValue.data.id);
+        formdata.append("First_Name", firstname);
+        formdata.append("Last_Name", lastname);
+        formdata.append("DOB", fulldate);
+        formdata.append("Gender", gender);
+        formdata.append("Bloodgroup", blood);
+        formdata.append("Address", address);
+        formdata.append("Place_to_Donate", donateplace);
+
+
+        axios.post("https://bloodbankapp.pythonanywhere.com/donateBlood", formdata)
+            .then(response => {
+            
+                if(response.data.status){
+                    setLoader(false)
+                    alert(response.data.message)
+                    //props.setdata(response.data)
+
+                    // props.navigation.navigate("Dashboard")
+                }
+                else{
+                    setLoader(false)
+                    alert(response.data.message)
+
+                }
+            })
+            .catch(error => console.log('error', error));
+
+
+    }
+
 
     return (
 
@@ -46,18 +98,19 @@ function BloodRequest(props) {
 
 
             <GlobalHead arrowstatus={true} headTitle={"Donor Form"} redirect={() => props.navigation.goBack()} />
+            {loader && <Loader/> }
             <ScrollView>
 
-                
+
 
                 <View style={styles.PickerGender}>
 
-                    <Text style={{ color: 'grey', left: 3 }} onPress={() => showDatepicker()}>Date of Birth</Text>
+                    <Text style={{ color: 'grey', left: 3 }} onPress={() => showDatepicker()}>{date == false ? "Date of Birth" : `${date.getDate()}/` + `${date.getMonth() + 1}/` + `${date.getFullYear()}`}</Text>
 
                     {show && (
                         <DateTimePicker
                             testID="dateTimePicker"
-                            value={date}
+                            value={new Date()}
                             mode={mode}
                             is24Hour={true}
                             display="default"
@@ -70,9 +123,9 @@ function BloodRequest(props) {
                 <View style={styles.buttonDiv}>
                     <TextInput underlineColor="red" selectionColor="red" style={{ backgroundColor: 'transparent' }}
                         label="First Name"
-                        value={text}
+                        value={firstname}
 
-                        onChangeText={text => setText(text)}
+                        onChangeText={text => setfirstname(text)}
                         theme={{
                             colors: {
                                 primary: "red"
@@ -86,9 +139,9 @@ function BloodRequest(props) {
                 <View style={styles.buttonDiv}>
                     <TextInput underlineColor="red" selectionColor="red" style={{ backgroundColor: 'transparent' }}
                         label="Last Name"
-                        value={text}
+                        value={lastname}
 
-                        onChangeText={text => setText(text)}
+                        onChangeText={text => setlastname(text)}
                         theme={{
                             colors: {
                                 primary: "red"
@@ -103,10 +156,10 @@ function BloodRequest(props) {
 
 
 
-                    <Picker style={{ color: 'grey' }} selectedValue={selectedValue} onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)} >
+                    <Picker style={{ color: 'grey' }} selectedValue={gender} onValueChange={(itemValue, itemIndex) => setgender(itemValue)} >
                         <Picker.Item label="Select Gender" value="" />
-                        <Picker.Item label="Male" value="Male" />
-                        <Picker.Item label="Female" value="Female" />
+                        <Picker.Item label="Male" value="male" />
+                        <Picker.Item label="Female" value="female" />
                     </Picker>
 
 
@@ -114,14 +167,15 @@ function BloodRequest(props) {
                 </View>
 
 
-                
+
+
 
 
 
                 <View style={styles.PickerBlood}>
 
 
-                    <Picker style={{ color: 'grey' }} selectedValue={selectedValue} onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
+                    <Picker style={{ color: 'grey' }} selectedValue={blood} onValueChange={(itemValue, itemIndex) => setblood(itemValue)}>
                         <Picker.Item label="Blood Group" value="" />
                         <Picker.Item label="O-" value="O-" />
                         <Picker.Item label="O+" value="O+" />
@@ -136,12 +190,13 @@ function BloodRequest(props) {
                 </View>
 
 
+
                 <View style={styles.buttonDiv}>
                     <TextInput underlineColor="red" selectionColor="red" style={{ backgroundColor: 'transparent' }}
                         label="Address"
-                        value={text}
+                        value={address}
 
-                        onChangeText={text => setText(text)}
+                        onChangeText={text => setaddress(text)}
                         theme={{
                             colors: {
                                 primary: "red"
@@ -154,10 +209,10 @@ function BloodRequest(props) {
 
                 <View style={styles.buttonDiv}>
                     <TextInput underlineColor="red" selectionColor="red" style={{ backgroundColor: 'transparent' }}
-                        label="Place to Doctor"
-                        value={text}
+                        label="Place to Donate"
+                        value={donateplace}
 
-                        onChangeText={text => setText(text)}
+                        onChangeText={text => setdonateplace(text)}
                         theme={{
                             colors: {
                                 primary: "red"
@@ -169,7 +224,7 @@ function BloodRequest(props) {
 
                 <View style={[styles.buttonDiv, { marginTop: 20 }]}>
 
-                    <HomeButton name={"Donate"} redirect={() => props.navigation.navigate("BloodRequestDashboard")} />
+                    <HomeButton name={"Donate"} redirect={() => donateBlood()} buttonActiveStatus ={loader} />
 
                 </View>
 

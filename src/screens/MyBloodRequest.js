@@ -26,7 +26,7 @@ function MyBloodRequestDashboard(props) {
 
         .then(response=>{
 
-            console.log("data ",response.data)
+    
             setallbloodrequest(response.data)
             
             
@@ -39,7 +39,6 @@ function MyBloodRequestDashboard(props) {
 
         },[])
 
-        console.log("data ",allbloodrequest)
 
     return (
 
@@ -57,36 +56,36 @@ function MyBloodRequestDashboard(props) {
             <FlatList 
             data={allbloodrequest.data}
             
-            renderItem={()=>{
+            renderItem={({item})=>{
 
                 return <View style={{  padding: 15, width: "90%", alignSelf: 'center', marginTop: "5%", borderRadius: 15, borderColor: 'grey', borderWidth: .5 }}>
                 <View style={{ padding: 5, flexDirection: "row" }}>
                     <View style={{ elevation: 10, height: 50, width: 50, backgroundColor: "#BF322D", borderRadius: 100 / 2, justifyContent: 'center' }}>
 
-                        <Text style={{ color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 20 }}>O+</Text>
+                        <Text style={{ color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 20 }}>{item.Bloodgroup}</Text>
                     </View>
 
                     <View style={{ padding: 8 }}>
 
-                        <Text style={{ fontWeight: "bold" }}>Mohammad Shakeeb</Text>
+                        <Text style={{ fontWeight: "bold" }}>{item.First_Name} {item.Last_Name}</Text>
                     </View>
                 </View>
 
                 <View style={{ height: 1, width: "100%", backgroundColor: "silver", alignSelf: 'center', marginTop: 5, borderRadius: 5 }}></View>
                 <View style={{ marginTop: 10, left: 15 }}>
                     <View style={{ flexDirection: 'row',paddingVertical:5 }}>
-                        <Text style={{fontWeight:'bold'}}>Mobile</Text>
-                        <Text style={{ marginStart: 20 ,fontWeight:'bold'}}>03482102017</Text>
+                        <Text style={{fontWeight:'bold'}}>Request For</Text>
+                        <Text style={{ marginStart: 20 ,fontWeight:'bold'}}>{item.Blood_for}</Text>
                     </View>
 
                     <View style={{ flexDirection: 'row' ,paddingVertical:5,width:"100%" }}>
                         <Text style={{fontWeight:'bold',with:"30%"}}>Address</Text>
-                        <Text style={{ marginStart: 20 , fontWeight:'bold',width:"70%"}} numberOfLines={2}>Nazimabad no#3 Goal market 10/1 Fatima manzil</Text>
+                        <Text style={{ marginStart: 20 , fontWeight:'bold',width:"70%"}} numberOfLines={2}>{item.Address}</Text>
                     </View>
 
                     <View style={{ flexDirection: 'row',paddingVertical:5 }}>
                         <Text style={{fontWeight:'bold'}}>Message</Text>
-                        <Text style={{ marginStart: 20 , fontWeight:'bold' }}>Plz Donate Blood</Text>
+                        <Text style={{ marginStart: 20 , fontWeight:'bold' }}>{item.Message_to_Donor}</Text>
                     </View>
 
 

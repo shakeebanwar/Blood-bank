@@ -20,7 +20,6 @@ function BloodRequest(props) {
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
     const [date, setDate] = useState(false);
-    const [blood, setblood] = useState("O+");
     const [firstname, setfirstname] = useState('');
     const [lastname, setlastname] = useState('');
     const [gender, setgender] = useState('');
@@ -178,8 +177,8 @@ function BloodRequest(props) {
 
                     <Picker style={{ color: 'grey' }} selectedValue={gender} onValueChange={(itemValue, itemIndex) => setgender(itemValue)} >
                         <Picker.Item label="Select Gender" value="" />
-                        <Picker.Item label="Male" value="Male" />
-                        <Picker.Item label="Female" value="Female" />
+                        <Picker.Item label="Male" value="male" />
+                        <Picker.Item label="Female" value="female" />
                     </Picker>
 
 
