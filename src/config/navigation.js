@@ -11,6 +11,7 @@ import BloodRequestDashboard from '../screens/BloodRequestDashboard';
 import MyBloodRequestDashboard from '../screens/MyBloodRequest';
 import Donor from '../screens/Donor';
 import Splash from '../screens/Splash';
+import Drawer from '../screens/Drawer';
 
 
 
@@ -27,6 +28,7 @@ function AppNavigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+      <Stack.Screen name="Drawer" options={{ headerShown: false }} component={Drawer} />
       <Stack.Screen name="Profile" options={{ headerShown: false }} component={Profile} />
       <Stack.Screen name="Donor" options={{ headerShown: false }} component={Donor} />
       <Stack.Screen name="BloodRequestDashboard" options={{ headerShown: false }} component={BloodRequestDashboard} />
